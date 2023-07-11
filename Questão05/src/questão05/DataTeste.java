@@ -1,9 +1,10 @@
 
 package questão05;
 
-public class Main {
 
+public class DataTeste extends Data{
     public static void main(String[] args) {
         
-    }    
+
+    }
 }
