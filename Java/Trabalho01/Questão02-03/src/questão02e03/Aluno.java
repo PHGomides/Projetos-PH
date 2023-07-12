@@ -1,17 +1,28 @@
 
 package questão02e03;
 
+import java.util.List;
+
 public class Aluno extends Pessoa{
     
-    private String curso, disciplina;
+    private String curso;
+    private List<Disciplina> disciplina;
     
     
-
-    public Aluno(int codigo, String nome, int cpf, int idade, String curso, String disciplina) {
-        super(codigo, nome, cpf, idade);
+    public Aluno(String nome, int cpf, int idade, String curso,  List<Disciplina> disciplina) {
+        super(nome, cpf, idade);
         this.curso = curso;
         this.disciplina = disciplina;
     }
+    
+    public List<Disciplina> getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(List<Disciplina> disciplina) {
+        this.disciplina = disciplina;
+    }
+
     
     public String getCurso() {
         return curso;
@@ -21,17 +32,9 @@ public class Aluno extends Pessoa{
         this.curso = curso;
     }
 
-    public String getDisciplina() {
-        return disciplina;
-    }
-
-    public void setDisciplina(String disciplina) {
-        this.disciplina = disciplina;
-    }
-
     @Override
     public String toString() {
-        return ("Codigo: "+getCodigo()+"Nome: "+getNome()+"\n CPF: "+getCpf()+"\n Idade: "+getIdade()+"\n curso: "+curso+"\n disciplina: "+disciplina);
+        return ("\nNome: "+getNome()+"\n CPF: "+getCpf()+"\n Idade: "+getIdade()+"\n Curso: "+curso+"\n Disciplina: "+disciplina);
     }
     
     
