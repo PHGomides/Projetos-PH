@@ -54,7 +54,7 @@ public class Pais {
         return fronteira;
     }
     
-    public List<Pais> checkFronteira(Pais outro) {
+    public List<Pais> ComumFronteira(Pais outro) {
     List<Pais> vizinhosComuns = new ArrayList<>();
     if (fronteira != null && outro.getFronteira() != null) {
         for (Pais paisFronteira : fronteira) {
@@ -68,7 +68,7 @@ public class Pais {
 
     @Override
     public String toString() {
-        return "Nome:" + nome + "\nCapital:" + capital + "\nDimensao:" + dimensao + '\n';
+        return "\nNome:" + nome + "\nCapital:" + capital + "\nDimensao:" + dimensao +"\n";
     }
     
     

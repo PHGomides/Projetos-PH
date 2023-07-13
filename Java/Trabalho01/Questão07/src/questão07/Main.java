@@ -31,8 +31,6 @@ public class Main {
         System.out.println(banco.getExtrato(c1));
         System.out.println(banco.getSaldo(c1));
         
-        
-        banco = new Banco();
-        System.out.println(banco);
+
     }   
 }

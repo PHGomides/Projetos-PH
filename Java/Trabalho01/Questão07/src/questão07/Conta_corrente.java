@@ -3,29 +3,29 @@ package questão07;
 import java.util.List;
 
 public class Conta_corrente {
-    //Atributos
-    int num, saldo,limite;
-    boolean isesp;
+
+    int numero, saldo,limite;
+    boolean tipo;
     private List<Movimentação> movimentacoes;
     
-    //Construtores
-    public Conta_corrente(int num,int saldo, int limite, boolean isesp, List<Movimentação> movimentacoes) {
-        this.num = num;
+
+    public Conta_corrente(int numero,int saldo, int limite, boolean tipo, List<Movimentação> movimentacoes) {
+        this.numero = numero;
         this.saldo = saldo;
         this.limite = limite;
-        this.isesp = isesp;
+        this.tipo = tipo;
         this.movimentacoes = movimentacoes;
     }
 
     public Conta_corrente() {
     }
 
-    public int getNum() {
-        return num;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setNum(int num) {
-        this.num = num;
+    public void setNum(int numero) {
+        this.numero = numero;
     }
 
     public int getSaldo() {
@@ -44,12 +44,12 @@ public class Conta_corrente {
         this.limite = limite;
     }
 
-    public boolean isIsesp() {
-        return isesp;
+    public boolean getTipo() {
+        return tipo;
     }
 
-    public void setIsesp(boolean isesp) {
-        this.isesp = isesp;
+    public void setTipo(boolean tipo) {
+        this.tipo = tipo;
     }
 
     public List<Movimentação> getMovimentacoes() {
@@ -62,6 +62,6 @@ public class Conta_corrente {
 
     @Override
     public String toString() {
-        return "ContaCorrente{" + "num=" + num + ", saldo=" + saldo + ", limite=" + limite + ", Conta Especial=" + isIsesp();
+        return "\n-----------\nConta: " + numero + "\nSaldo: " + saldo + "\nLimite: " + limite + "\nConta Especial: " + getTipo();
     }
 }

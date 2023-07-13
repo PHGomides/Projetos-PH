@@ -25,12 +25,14 @@ public class Main {
     fronteiraUruguai.add(argentina);
     uruguai.setFronteira(fronteiraUruguai);
 
-    List<Pais> paisesEmComum = brasil.checkFronteira(argentina);
-    List<Pais> paisesEmComum2 = brasil.checkFronteira(uruguai);
-    List<Pais> paisesEmComum3 = argentina.checkFronteira(uruguai);
+    List<Pais> paisesEmComum = brasil.ComumFronteira(argentina);
+    List<Pais> paisesEmComum2 = brasil.ComumFronteira(uruguai);
+    List<Pais> paisesEmComum3 = argentina.ComumFronteira(uruguai);
+    
+    System.out.println(brasil);
+    System.out.println(argentina);
+    System.out.println(uruguai);
 
-    System.out.println("Paises em comum entre Brasil e Argentina:" + "\n" + paisesEmComum);
-    System.out.println("\nPaises em comum entre Brasil e Uruguai:" + "\n" + paisesEmComum2);
-    System.out.println("\nPaises em comum entre Argentina e Uruguai:" + "\n" + paisesEmComum3);
+    System.out.println("\n----------------\nFronteiras em comum\n" + "\nBrasil e Argentinan\n" + paisesEmComum + "\nBrasil e Uruguai \n" + paisesEmComum2 + "\nUruguai e Argentina\n" + paisesEmComum3);
    }
 }

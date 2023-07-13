@@ -1,11 +1,11 @@
 package questão07;
 
 public class Movimentação {
-    //Atributos
+
     private String desc;
     private int valor,info;
     
-    //Construtores
+ 
     public Movimentação(String desc, int valor, int info) {
         this.desc = desc;
         this.valor = valor;
@@ -33,9 +33,9 @@ public class Movimentação {
 
     public String getInfo() {
         if(info>=1){
-        return "Movimentacao de Credito";
+        return "Credito";
         }else{
-        return "Movimentacao de Debito";
+        return "Debito";
         }
     }
 
@@ -45,7 +45,7 @@ public class Movimentação {
 
     @Override
     public String toString() {
-        return "Movimentacao:" + "descricao:" + desc + ", valor:" + valor + ", info:" + getInfo();
+        return "\n###########\nMovimentacao\nDescricao: " + desc + "\nValor: " + valor + "\nInfo: " + getInfo();
     }
     
     
