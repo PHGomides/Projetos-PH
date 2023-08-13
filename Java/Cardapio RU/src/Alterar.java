@@ -1,41 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 import  javax.swing.border.EmptyBorder;
-public class Alterar extends  JFrame{
-    public static String[] vetdia, vetproteina, vetvegano, vetsalada, vetfruta, vetsuco;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+public class Alterar extends  JFrame implements ActionListener {
     private JButton BtProximo, BtAnterior, BtSair, BtSalvar;
     private JPanel pnBotões, pnCardapio, pnInfos;
     private JTextField lbproteina, lbvegano, lbsalada, lbsuco, lbfruta;
     private JTextField tfDia, tfproteina, tfvegano, tfsalada, tfsuco, tffruta;
 
-    public static void setVetdia(String[] vetdia) {
-        Alterar.vetdia = vetdia;
-    }
-
-    public static String[] getVetdia() {
-        return vetdia;
-    }
-
-    public static String[] getVetproteina() {
-        return vetproteina;
-    }
-
-    public static String[] getVetvegano() {
-        return vetvegano;
-    }
-
-    public static String[] getVetsalada() {
-        return vetsalada;
-    }
-
-    public static String[] getVetfruta() {
-        return vetfruta;
-    }
-
-    public static String[] getVetsuco() {
-        return vetsuco;
-    }
+    private static Cliente cliente;
 
     Alterar(){
 
@@ -46,8 +20,7 @@ public class Alterar extends  JFrame{
         JLabel imagens = new JLabel(imagem);
 
         //Configurando componentes
-        tfDia = new JTextField();
-        tfDia.setText("dia");
+        tfDia = new JTextField(cliente.vetdia[cliente.dia_semana]);
         tfDia.setEditable(false);
         Font font = new Font("Arial", Font.BOLD, 25);
         Font fontcadastro = new Font("Arial",Font.BOLD,12);
@@ -79,10 +52,23 @@ public class Alterar extends  JFrame{
 
         tffruta = new JTextField();
 
+        tfproteina.setText(cliente.vetproteina[cliente.dia_semana]);
+        tfvegano.setText(cliente.vetvegano[cliente.dia_semana]);
+        tfsalada.setText(cliente.vetsalada[cliente.dia_semana]);
+        tffruta.setText(cliente.vetfruta[cliente.dia_semana]);
+        tfsuco.setText(cliente.vetsuco[cliente.dia_semana]);
+
         BtAnterior = new JButton("Anterior");
+        BtAnterior.addActionListener(this);
+
         BtProximo = new JButton("Proximo");
-        BtSair = new JButton("Sair");
+        BtProximo.addActionListener(this);
+
+        BtSair = new JButton("Voltar");
+        BtSair.addActionListener(this);
+
         BtSalvar = new JButton("Salvar");
+        BtSalvar.addActionListener(this);
 
 
         //Configurando Painel
@@ -156,6 +142,47 @@ public class Alterar extends  JFrame{
         lbsalada.setHorizontalAlignment(JTextField.CENTER);
         lbfruta.setHorizontalAlignment(JTextField.CENTER);
         lbsuco.setHorizontalAlignment(JTextField.CENTER);
-    }
 
+
+        //----------------------------------------------------------------------------------------
+
+
+        //Configurando funcionalidades
+
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == BtSalvar){
+            cliente.vetproteina[cliente.dia_semana] = tfproteina.getText();
+            cliente.vetvegano[cliente.dia_semana] = tfvegano.getText();
+            cliente.vetsalada[cliente.dia_semana] = tfsalada.getText();
+            cliente.vetsuco[cliente.dia_semana] = tfsuco.getText();
+            cliente.vetfruta[cliente.dia_semana] = tffruta.getText();
+            JOptionPane.showMessageDialog(null,"Cardapio da " +cliente.vetdia[cliente.dia_semana] + " cadastrado com sucesso");
+        }else if (e.getSource() == BtProximo){
+            if (cliente.dia_semana < 4){
+                cliente.dia_semana++;
+                tfDia.setText(cliente.vetdia[cliente.dia_semana]);
+                tfproteina.setText(cliente.vetproteina[cliente.dia_semana]);
+                tfvegano.setText(cliente.vetvegano[cliente.dia_semana]);
+                tfsalada.setText(cliente.vetsalada[cliente.dia_semana]);
+                tffruta.setText(cliente.vetfruta[cliente.dia_semana]);
+                tfsuco.setText(cliente.vetsuco[cliente.dia_semana]);
+            }
+        }else if (e.getSource() == BtAnterior) {
+            if (cliente.dia_semana > 0) {
+                cliente.dia_semana--;
+                tfDia.setText(cliente.vetdia[cliente.dia_semana]);
+                tfproteina.setText(cliente.vetproteina[cliente.dia_semana]);
+                tfvegano.setText(cliente.vetvegano[cliente.dia_semana]);
+                tfsalada.setText(cliente.vetsalada[cliente.dia_semana]);
+                tffruta.setText(cliente.vetfruta[cliente.dia_semana]);
+                tfsuco.setText(cliente.vetsuco[cliente.dia_semana]);
+            }
+        } else if (e.getSource() == BtSair) {
+            dispose();
+            Janela janela = new Janela();
+        }
+
+    }
 }

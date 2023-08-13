@@ -1,7 +1,9 @@
 
 public class Main {
     public static void main(String[] args) {
-    Janela janela = new Janela();
-    Alterar alterar = new Alterar();
+        Cliente cliente = new Cliente();
+        Janela janela = new Janela();
+
+
     }
 }
