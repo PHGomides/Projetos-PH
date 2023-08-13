@@ -1,34 +1,40 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-typedef struct pilha{    
+typedef struct Node{    
     int item;
+    struct Node *prox;
 }pilha;
 
-pilha p[5];
+pilha *topo;
+pilha *aux;
 
-int topo = -1, tip, flag = 1;
 
-void Push(pilha p[] ,int num){
-    if(topo == 4){
-        printf("\n\nPilha esta cheia\n\n");
+int tip, flag = 1, cont=0;
+
+void Push(int num){
+    pilha *novoNoh = (pilha*)malloc(sizeof(pilha));
+    if(novoNoh == NULL){
+        printf("\n\nErro na alocacao de memoria\n\n");
         system("pause");
-
     }else{
-        topo++;
-        p[topo].item = num;
-
+        cont++;
+        novoNoh -> item = num;
+        novoNoh -> prox = topo;
+         printf("%d", novoNoh ->item);
+         system("pause");
+        topo = novoNoh;
     }
 }
-void Pop(pilha p[]){
-    if(topo == -1){
+void Pop(){
+    if(topo == NULL){
         printf("\n\nPilha esta vazia\n\n");
         system("pause");
- 
     }else{
-        p[topo].item = 0;
-        topo--;
-
+        aux = topo -> prox;
+        free(&topo);
+        *topo = *aux;
+        cont--;
     }
 }
 
@@ -47,21 +53,18 @@ int main(){
         printf("\n\nDigite o numero para armazenar: ");
         printf("--> ");
         scanf("%d",&num);
-        Push(p,num);
+        Push(num);
         system("cls");
         break;
     case 2:
-        Pop(p);
+        Pop(&topo);
         system("cls");
         break;
     case 3:
-        if(topo == -1){
-            printf("\n\nPilha esta vazia\n\n");
-        }else if(topo == 4){
-            printf("\n\nPilha esta cheia\n\n");
+        if(topo == NULL){
+            printf("\n\nPilha esta vazia\n\n");  
         }else{
-            printf("\n\nPilha com tamanho: %d\n",(topo+1));
-            printf("Valor no topo da pilha: %d\n\n",p[topo].item);
+            printf("\n\nPilha com tamanho: %d\n",cont);
         }
         break;
     case 4:
