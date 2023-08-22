@@ -180,8 +180,8 @@ public class Alterar extends  JFrame implements ActionListener {
                 tfsuco.setText(cliente.vetsuco[cliente.dia_semana]);
             }
         } else if (e.getSource() == BtSair) {
-            dispose();
             Janela janela = new Janela();
+            dispose();
         }
 
     }
