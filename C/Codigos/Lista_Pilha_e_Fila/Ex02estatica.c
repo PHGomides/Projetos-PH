@@ -8,7 +8,7 @@ typedef struct pilha{
 }pilha;
 
 pilha p[5];
-pilha h[5];
+
 
 char teste[30];
 
@@ -47,15 +47,15 @@ void Pop(pilha p[]){
                     p[i].nome[x] = ' ';
                 }
                 p[i].idade = 0;
-            }
-                for (int u = topo; u >= t; u--){
+                for (int u = t; u < topo; u++){
                     for (int x = 0; x < 30; x++){
-                        p[u].nome[x] = p[u-1].nome[x];
+                        p[u].nome[x] = p[u+1].nome[x];
                     }
-                    p[u].idade = p[u-1].idade;
+                    p[u].idade = p[u+1].idade;    
                 }
             }
-        
+        }
+        topo --;
     }
 }
 
@@ -66,7 +66,7 @@ int main(){
 
     do{
     printf("\n-------------------------------------------------");
-    printf("\n\n1-Incrementar item: \n2-Retirar item \n3-Verificar tamanho \n4-Fechar\n");
+    printf("\n\n1-Incrementar item: \n2-Retirar item \n3-Verificar  \n4-Fechar\n");
     printf("--> ");
     scanf("%d",&tip);
     switch (tip)
@@ -90,12 +90,10 @@ int main(){
     case 3:
         if(topo == -1){
             printf("\n\nPilha esta vazia\n\n");
-        }else if(topo == 4){
-            printf("\n\nPilha esta cheia\n\n");
         }else{
             printf("\n\nPilha com tamanho: %d\n",(topo+1));
             for(int i = 0; i <= topo; i++ ){
-                printf(" nome: %s  idade: %d",p[i].nome, p[i].idade);
+                printf(" //##// nome: %s  idade: %d",p[i].nome, p[i].idade);
             }
         }
         break;
