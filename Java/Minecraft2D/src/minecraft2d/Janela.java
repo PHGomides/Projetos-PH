@@ -17,31 +17,35 @@ public class Janela extends JFrame implements KeyListener{
     private final String avatar = "./src/Imagens/Steve.png";
     private final String madeira = "./src/Imagens/Madeira.png";
     private final String terra = "./src/Imagens/Terra.png";
-    private final String ceu = "./src/Imagens/Ceu.png";
-    private final String flor = "./src/Imagens/Flor.png";
+    private final String ceu = "./src/Imagens/Azul.png";
+    private final String pedra = "./src/Imagens/Pedra.png";
     private final String folha = "./src/Imagens/Folha.png";
+    private final String branco = "./src/Imagens/Nuvem.png";
     
     
     private MyPanel myPanel[];
     
     private int[] tipoblocos;
     
-    private ImageIcon av;
+    private ImageIcon av1;
     private ImageIcon fundo;
+    private ImageIcon nuvem;
     private ImageIcon bloco1;
     private ImageIcon bloco2;
     private ImageIcon bloco3;
     private ImageIcon bloco4;
     
+
     private int posAv;
     
     public Janela() {
         
         this.setLayout(new GridLayout(rows,cols));
         
-        av = new ImageIcon(avatar);
+        av1 = new ImageIcon(avatar);
         fundo = new ImageIcon(ceu);
-        bloco1 = new ImageIcon(flor);
+        nuvem = new ImageIcon(branco);
+        bloco1 = new ImageIcon(pedra);
         bloco2 = new ImageIcon(terra);
         bloco3 = new ImageIcon(madeira);
         bloco4 = new ImageIcon(folha);
@@ -55,8 +59,53 @@ public class Janela extends JFrame implements KeyListener{
             this.add(myPanel[i]);
         }
         
-        posAv = 0;
-        myPanel[0].setIcon(av);
+        
+        // terra e pedra
+        for(int i = 0; i<size; i++){
+            if((i >= 360) && (i <380)){
+                myPanel[i].setIcon(bloco2);
+                tipoblocos[i] = 2;
+            }else if (i >= 380){
+                myPanel[i].setIcon(bloco1);
+                tipoblocos[i] = 1;
+            }
+        }
+        
+        posAv = 350;
+        myPanel[350].setIcon(av1);
+        
+        // Nuvem
+        for(int i = 0; i<size; i++){
+            if((i>=22 && i<26) || (i>=28 && i <32) || (i>=34 && i <38)){
+                myPanel[i].setIcon(nuvem);
+                tipoblocos[i] = 5;
+            }
+            
+            if(i >40 && i <59){
+                myPanel[i].setIcon(nuvem);
+                tipoblocos[i] = 5;
+            }
+            
+            if((i>=22 && i<26) || (i>=28 && i <32) || (i>=34 && i <38)){
+                myPanel[i].setIcon(nuvem);
+                tipoblocos[i] = 5;
+            }
+        }
+        
+        // Madeira e folha
+        for(int i = 0; i<size; i++){
+            if(i == 356 || i== 336 || i==316  || i== 344 || i == 324 || i == 304){
+                myPanel[i].setIcon(bloco3);
+                tipoblocos[i] = 3;
+            }
+            
+            if((i== 295 || i== 296 || i== 297) || (i== 275 || i== 276 || i== 277) || (i== 255 || i== 256 || i== 257 || i == 236)                     ||  (i== 283 || i== 284 || i== 285) ||  (i== 263 || i== 264 || i== 265) ||  (i== 243 || i== 244 || i== 245 || i== 224)){
+                myPanel[i].setIcon(bloco4);
+                tipoblocos[i] = 4;
+            }
+            
+      
+        }
         
         
         this.addKeyListener(this);
@@ -81,6 +130,8 @@ public class Janela extends JFrame implements KeyListener{
                 return bloco3;
             case 4:
                 return bloco4;
+            case 5:
+                return nuvem;
             default:
                 return fundo;
         }
@@ -97,64 +148,64 @@ public class Janela extends JFrame implements KeyListener{
             myPanel[posAv].setIcon(getIcon(posAv));
             posAv++;
             if (posAv > size-1) posAv = 0;
-            myPanel[posAv].setIcon(av);
+            myPanel[posAv].setIcon(av1);
         }
         
         if (key.getKeyCode() == KeyEvent.VK_LEFT) {
             myPanel[posAv].setIcon(getIcon(posAv));
             posAv--;
             if (posAv < 0) posAv = size-1;
-            myPanel[posAv].setIcon(av);
+            myPanel[posAv].setIcon(av1);
         }
          
          if (key.getKeyCode() == KeyEvent.VK_DOWN) {
             myPanel[posAv].setIcon(getIcon(posAv));
             posAv+=20;
             if (posAv > 399) posAv = posAv - 399;
-            myPanel[posAv].setIcon(av);
+            myPanel[posAv].setIcon(av1);
         }
         
          if (key.getKeyCode() == KeyEvent.VK_UP) {
             myPanel[posAv].setIcon(getIcon(posAv));
             posAv-=20;
             if (posAv < 0) posAv = 399 - (Math.abs(posAv));
-            myPanel[posAv].setIcon(av);
+            myPanel[posAv].setIcon(av1);
         }
         
         // construções
         if (key.getKeyCode() == KeyEvent.VK_1) {
-            myPanel[posAv].setIcon(fundo);
+            myPanel[posAv].setIcon(bloco1);
             tipoblocos[posAv] = 1;
-            key.setKeyCode(KeyEvent.VK_RIGHT);
+            key.setKeyCode(KeyEvent.VK_UP);
             keyPressed(key);
         }
         
         if (key.getKeyCode() == KeyEvent.VK_2) {
-            myPanel[posAv].setIcon(bloco1);
+            myPanel[posAv].setIcon(bloco2);
             tipoblocos[posAv] = 2;
-            key.setKeyCode(KeyEvent.VK_RIGHT);
+            key.setKeyCode(KeyEvent.VK_UP);
             keyPressed(key);
         }
        
         if (key.getKeyCode() == KeyEvent.VK_3) {
-            myPanel[posAv].setIcon(bloco2);
+            myPanel[posAv].setIcon(bloco3);
             tipoblocos[posAv] = 3;
-            key.setKeyCode(KeyEvent.VK_RIGHT);
+            key.setKeyCode(KeyEvent.VK_UP);
             keyPressed(key);
         }
         
         
         if (key.getKeyCode() == KeyEvent.VK_4) {
-            myPanel[posAv].setIcon(bloco3);
+            myPanel[posAv].setIcon(bloco4);
             tipoblocos[posAv] = 4;
-            key.setKeyCode(KeyEvent.VK_RIGHT);
+            key.setKeyCode(KeyEvent.VK_UP);
             keyPressed(key);
         }
         
         if (key.getKeyCode() == KeyEvent.VK_SPACE) {
-            myPanel[posAv].setIcon(bloco4);
+            myPanel[posAv].setIcon(fundo);
             tipoblocos[posAv] = 0;
-            key.setKeyCode(KeyEvent.VK_RIGHT);
+            key.setKeyCode(KeyEvent.VK_UP);
             keyPressed(key);
         }
     }  
