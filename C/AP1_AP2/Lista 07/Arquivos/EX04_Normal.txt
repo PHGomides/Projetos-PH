@@ -1,0 +1,3 @@
+Nome : Pedro
+Numero inteiro : 242
+Numero real : 49.99

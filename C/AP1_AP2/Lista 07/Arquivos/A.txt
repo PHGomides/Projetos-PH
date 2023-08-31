@@ -1,0 +1,2 @@
+Nome : Pedro
+Salario : 100.000

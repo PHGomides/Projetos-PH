@@ -1,0 +1,92 @@
+porca{50,00{Terram
+parafuso{10,00{Paraiso
+prego{5,00{Hostinger
+eixo-central{50,00{Stara
+eixo-central{50,00{Stara
+eixo-central{50,00{Stara
+eixo-central{50,00{Stara
+parafuso{12,00{Prais
+parafuso{13,00{Piso
+parafuso{14,00{Para
+Molas{99,00{Agrimaq
+Arruela{50,00{Terram
+Parafuso{10,00{Paraiso
+Prego{5,00{Agroforte
+Eixo-central{50,00{Stara
+Eixo-sextravado{50,00{Agropec
+Eixo-caracol{50,00{Agrotudo
+Eixo-monilete{50,00{Safra forte
+Parafuso Sextravado{12,00{Grao de Ouro
+Parafuso Chanfrado{13,00{Homem do Campo
+Retentor{14,00{Central Maquinas
+Polia{110,00{Terram
+Engrenagem{150,00{Paraiso
+Rotor{2600,00{Agroforte
+Esteira{2000,00{Stara
+Barra Lateral{105,00{Central Maquinas
+Corrente{89,90{Homem do Campo
+Semi Eixo{321,99{Agromil
+Semente de Soja{150,00{Grao de Ouro
+Semente de Milho{50,00{Grao de Ouro
+Semente de Milheto{90,00{Grao de Ouro
+Semente de Sorgo{80,00{Grao de Ouro
+Semente de Trigo{150,00{Grao de Ouro
+Semente de Arroz{50,00{Grao de Ouro
+Semente de Feijao{210,00{Grao de Ouro
+Semente de Soja{155,00{Safra Forte
+Semente de Milho{52,00{Safra Forte
+Semente de Milheto{89,00{Safra Forte
+Semente de Sorgo{68,00{Safra Forte
+Semente de Trigo{136,00{Safra Forte
+Semente de Arroz{56,00{Safra Forte
+Semente de Feijao{214,00{Safra Forte
+Semente de Soja{142,00{Nucleo Agricola
+Semente de Milho{48,50{Nucleo Agricola
+Semente de Milheto{85,90{Nucleo Agricola
+Semente de Sorgo{79,50{Nucleo Agricola
+Semente de Trigo{153,10{Nucleo Agricola
+Semente de Arroz{51,40{Nucleo Agricola
+Semente de Feijao{213,49{Nucleo Agricola
+Semente de Soja{136,80{Insolo
+Semente de Milho{44,10{Insolo
+Semente de Milheto{73,89{Insolo
+Semente de Sorgo{56,99{Insolo
+Semente de Trigo{158,60{Insolo
+Semente de Arroz{61,36{Insolo
+Semente de Feijao{215,48{Insolo
+Calcario{200,00{Nutrien
+Gesso{250,00{Nutrien
+Ureia{450,00{Nutrien
+Cloreto{390,00{Nutrien
+Calcario{205,25{Interadubo
+Gesso{237,48{Interadubo
+Ureia{470,30{Interadubo
+Cloreto{399,10{Interadubo
+Calcario{223,00{Soloative
+Gesso{243,00{Soloative
+Ureia{407,99{Soloative
+Cloreto{398,70{Soloative
+Calcario{199,79{Heringer
+Gesso{249,99{Heringer
+Ureia{427,00{Heringer
+Cloreto{386,90{Heringer
+Mangueira hidraulica{60,00{Agrimaq
+Engate rapido{45,00{Agrimaq
+Trava Elastica{12,60{Agrimaq
+Alternador{2500,60{Agrimaq
+Motor de Partida{7000,00{Agrimaq
+Correia Rotor{6000,00{Agrimaq
+Correia Plataforma{300,00{AgriEx
+Cubo Traseiro{1200,00{AgriEx
+Cubo Dianteiro{1250,00{AgriEx
+Barra de Corte{1100,00{AgriEx
+Mangueira hidraulica{62,00{Agrify
+Engate rapido{47,80{Agrify
+Trava Elastica{10,60{Agrify
+Alternador{2560,69{Agrify
+Motor de Partida{6800,90{Agrify
+Correia Rotor{9800,10{Agrify
+Correia Plataforma{304,90{Implemaq
+Cubo Traseiro{1230,00{Implemaq
+Cubo Dianteiro{1256,09{Implemaq
+Barra de Corte{1110,80{Implemaq
