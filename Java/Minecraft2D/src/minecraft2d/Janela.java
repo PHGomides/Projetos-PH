@@ -15,12 +15,14 @@ public class Janela extends JFrame implements KeyListener{
     private final int rows = 20;
     
     private final String avatar = "./src/Imagens/Steve.png";
+    private final String avatar2 = "./src/Imagens/Steve2.png";
     private final String madeira = "./src/Imagens/Madeira.png";
     private final String terra = "./src/Imagens/Terra.png";
     private final String ceu = "./src/Imagens/Azul.png";
     private final String pedra = "./src/Imagens/Pedra.png";
     private final String folha = "./src/Imagens/Folha.png";
     private final String branco = "./src/Imagens/Nuvem.png";
+    private  Boolean lado;
     
     
     private MyPanel myPanel[];
@@ -28,6 +30,7 @@ public class Janela extends JFrame implements KeyListener{
     private int[] tipoblocos;
     
     private ImageIcon av1;
+    private ImageIcon av2;
     private ImageIcon fundo;
     private ImageIcon nuvem;
     private ImageIcon bloco1;
@@ -43,6 +46,7 @@ public class Janela extends JFrame implements KeyListener{
         this.setLayout(new GridLayout(rows,cols));
         
         av1 = new ImageIcon(avatar);
+        av2 = new ImageIcon(avatar2);
         fundo = new ImageIcon(ceu);
         nuvem = new ImageIcon(branco);
         bloco1 = new ImageIcon(pedra);
@@ -144,33 +148,53 @@ public class Janela extends JFrame implements KeyListener{
     public void keyPressed(KeyEvent key) {
         
         // movimentações
+        // movimentações
         if (key.getKeyCode() == KeyEvent.VK_RIGHT) {
-            myPanel[posAv].setIcon(getIcon(posAv));
-            posAv++;
-            if (posAv > size-1) posAv = 0;
-            myPanel[posAv].setIcon(av1);
+            int nextPos = posAv + 1;
+            if (nextPos % cols != 0 && tipoblocos[nextPos] == 0) {
+                myPanel[posAv].setIcon(getIcon(posAv));
+                posAv = nextPos;
+                myPanel[posAv].setIcon(av1);
+                lado = true;
+            }
         }
-        
+
         if (key.getKeyCode() == KeyEvent.VK_LEFT) {
-            myPanel[posAv].setIcon(getIcon(posAv));
-            posAv--;
-            if (posAv < 0) posAv = size-1;
-            myPanel[posAv].setIcon(av1);
+            int nextPos = posAv - 1;
+            if (nextPos >= 0 && tipoblocos[nextPos] == 0) {
+                myPanel[posAv].setIcon(getIcon(posAv));
+                posAv = nextPos;
+                myPanel[posAv].setIcon(av2);
+                lado = false;
+            }
         }
-         
-         if (key.getKeyCode() == KeyEvent.VK_DOWN) {
-            myPanel[posAv].setIcon(getIcon(posAv));
-            posAv+=20;
-            if (posAv > 399) posAv = posAv - 399;
-            myPanel[posAv].setIcon(av1);
+
+        if (key.getKeyCode() == KeyEvent.VK_DOWN) {
+            int nextPos = posAv + cols;
+            if (nextPos < size && tipoblocos[nextPos] == 0) {
+                myPanel[posAv].setIcon(getIcon(posAv));
+                posAv = nextPos;
+                if (lado){
+                    myPanel[posAv].setIcon(av1);
+                } else {
+                    myPanel[posAv].setIcon(av2);
+                }
+            }
         }
-        
-         if (key.getKeyCode() == KeyEvent.VK_UP) {
-            myPanel[posAv].setIcon(getIcon(posAv));
-            posAv-=20;
-            if (posAv < 0) posAv = 399 - (Math.abs(posAv));
-            myPanel[posAv].setIcon(av1);
+
+        if (key.getKeyCode() == KeyEvent.VK_UP) {
+            int nextPos = posAv - cols;
+            if (nextPos >= 0 && tipoblocos[nextPos] == 0) {
+                myPanel[posAv].setIcon(getIcon(posAv));
+                posAv = nextPos;
+                if (lado){
+                    myPanel[posAv].setIcon(av2);
+                } else {
+                    myPanel[posAv].setIcon(av1);
+                }
+            }
         }
+
         
         // construções
         if (key.getKeyCode() == KeyEvent.VK_1) {
@@ -202,14 +226,92 @@ public class Janela extends JFrame implements KeyListener{
             keyPressed(key);
         }
         
+        
         if (key.getKeyCode() == KeyEvent.VK_SPACE) {
             myPanel[posAv].setIcon(fundo);
             tipoblocos[posAv] = 0;
-            key.setKeyCode(KeyEvent.VK_UP);
+            key.setKeyCode(KeyEvent.VK_RIGHT);
             keyPressed(key);
         }
-    }  
+        
+        if (key.getKeyCode() == KeyEvent.VK_A) {
+            int leftPos = posAv - 1;
+            if (leftPos >= 0 && tipoblocos[leftPos] != 0) {
+                myPanel[leftPos].setIcon(getIcon(posAv));
+                tipoblocos[leftPos] = tipoblocos[posAv]; 
+                myPanel[leftPos].setIcon(getIcon(leftPos));
+            }
+            int nextPos = posAv - 1;
+            if (nextPos >= 0 && tipoblocos[nextPos] == 0) {
+                myPanel[posAv].setIcon(getIcon(posAv));
+                posAv = nextPos;
+                myPanel[posAv].setIcon(av2);
+                lado = false;
+            }
+            
+        }
+        
+        if (key.getKeyCode() == KeyEvent.VK_D) {
+            int rightPos = posAv + 1;
+            if (rightPos >= 0 && tipoblocos[rightPos] != 0) {
+                myPanel[rightPos].setIcon(getIcon(posAv));
+                tipoblocos[rightPos] = tipoblocos[posAv]; 
+                myPanel[rightPos].setIcon(getIcon(rightPos));
+            }
+            int nextPos = posAv + 1;
+            if (nextPos % cols != 0 && tipoblocos[nextPos] == 0) {
+                myPanel[posAv].setIcon(getIcon(posAv));
+                posAv = nextPos;
+                myPanel[posAv].setIcon(av1);
+                lado = true;
+            }
+        }
+        
+        if (key.getKeyCode() == KeyEvent.VK_W) {
+            int upPos = posAv - 20;
+            if (upPos >= 0 && tipoblocos[upPos] != 0) {
+                myPanel[upPos].setIcon(getIcon(posAv));
+                tipoblocos[upPos] = tipoblocos[posAv]; 
+                myPanel[upPos].setIcon(getIcon(upPos));
+            }
+            int nextPos = posAv - cols;
+            if (nextPos >= 0 && tipoblocos[nextPos] == 0) {
+                myPanel[posAv].setIcon(getIcon(posAv));
+                posAv = nextPos;
+                if (lado){
+                    myPanel[posAv].setIcon(av2);
+                } else {
+                    myPanel[posAv].setIcon(av1);
+                }
+            }
+            
+            
+            
+            
+            
+            
+        }
+        
+        if (key.getKeyCode() == KeyEvent.VK_S) {
+            int downPos = posAv + 20;
+            if (downPos >= 0 && tipoblocos[downPos] != 0) {
+                myPanel[downPos].setIcon(getIcon(posAv));
+                tipoblocos[downPos] = tipoblocos[posAv]; 
+                myPanel[downPos].setIcon(getIcon(downPos));
+            }
+             int nextPos = posAv + cols;
+            if (nextPos < size && tipoblocos[nextPos] == 0) {
+                myPanel[posAv].setIcon(getIcon(posAv));
+                posAv = nextPos;
+                if (lado){
+                    myPanel[posAv].setIcon(av1);
+                } else {
+                    myPanel[posAv].setIcon(av2);
+                }
+            }
+        }
 
+    }
     @Override
     public void keyTyped(KeyEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
