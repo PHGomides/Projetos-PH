@@ -9,7 +9,7 @@ typedef struct Item {
 	struct Item *proximo;
 } Item;
 
-
+ 
 typedef Item* tipoFila;
 
 
@@ -43,6 +43,7 @@ tipoFila Push(char ent[] ,int num, tipoFila fila) {
 	}
 }
 
+
 tipoFila Pop(tipoFila fila) {
 	if (fila == NULL) {
 		printf("\nFila vazia!\n");
@@ -53,6 +54,7 @@ tipoFila Pop(tipoFila fila) {
 	}
 	return fila;
 }
+
 
 void exibirPrimeiro(tipoFila fila) {
 	if (fila == NULL) {
