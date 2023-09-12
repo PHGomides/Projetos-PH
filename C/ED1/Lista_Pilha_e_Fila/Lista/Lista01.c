@@ -5,17 +5,17 @@
 typedef struct Node{    
     int item;
     struct Node *prox;
-}lista;
+}*lista;
 
-lista *topo;
-lista *inicio;
+lista topo;
+lista inicio;
 int cont;
 
 
 
 lista criarNOH(int num){
     
-    lista *novoNoh = (lista*)malloc(sizeof(lista));
+    lista novoNoh = (lista*)malloc(sizeof(lista));
     if(novoNoh == NULL){
         printf("\n\nErro na alocacao de memoria\n\n");
         system("pause");
@@ -47,7 +47,7 @@ lista Inserir_fim(int num){
     if(lista == NULL){
         return novoNoh;
     }else{
-        lista* lista_aux = lista;
+        lista lista_aux = lista;
         while (lista_aux != NULL) {
             if(lista_aux->prox == NULL){
                 lista_aux->prox = novoNoh;
@@ -100,7 +100,7 @@ int main() {
         if (lista == NULL) {
             printf("lista vazia!\n");
             } else {
-            lista* lista_aux = lista;
+            lista lista_aux = lista;
             while (lista_aux != NULL) {
                 printf("\nQuantidade:%d \n  Item: %d,\n",cont,lista_aux->idade);
                 lista_aux = lista_aux->prox;
