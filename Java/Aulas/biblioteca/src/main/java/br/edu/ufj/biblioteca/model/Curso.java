@@ -1,42 +1,42 @@
-package br.edu.ufj.aulabackend.model;
-
-import java.util.ArrayList;
-import java.util.List;
+package br.edu.ufj.biblioteca.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Autores")
-public class Autor {
-    // Atributos
+@Table(name = "Cursos")
+public class Curso {
+
+    // atributos
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo_autor")
+    @Column(name = "Codigo_curso")
     private int codigo;
 
-    @Column(name = "nome_autor", nullable = false)
+    @Column(name = "Nome_curso")
     private String nome;
 
-    @OneToMany
-    private List<Livro> livros = new ArrayList<>();
+    @Column(name = "Ch_curso")
+    private int ch;
 
     // Construtores
 
-    public Autor() {
+    public Curso() {
+
     }
 
-    public Autor(int codigo, String nome) {
+    public Curso(int codigo, String nome, int ch) {
         this.codigo = codigo;
         this.nome = nome;
+        this.ch = ch;
     }
 
-    // Métodos
+    // Metodos
 
     public int getCodigo() {
         return codigo;
@@ -54,16 +54,27 @@ public class Autor {
         this.nome = nome;
     }
 
+    public int getCh() {
+        return ch;
+    }
+
+    public void setCh(int ch) {
+        this.ch = ch;
+    }
+
     @Override
+
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + codigo;
         result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+        result = prime * result + ch;
         return result;
     }
 
     @Override
+
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -71,13 +82,15 @@ public class Autor {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Autor other = (Autor) obj;
+        Curso other = (Curso) obj;
         if (codigo != other.codigo)
             return false;
         if (nome == null) {
             if (other.nome != null)
                 return false;
         } else if (!nome.equals(other.nome))
+            return false;
+        if (ch != other.ch)
             return false;
         return true;
     }

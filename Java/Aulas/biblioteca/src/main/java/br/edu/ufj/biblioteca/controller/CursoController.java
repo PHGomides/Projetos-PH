@@ -1,4 +1,4 @@
-package br.edu.ufj.aulabackend.controller;
+package br.edu.ufj.biblioteca.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,38 +7,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ufj.aulabackend.dao.AutorDAO;
-import br.edu.ufj.aulabackend.model.Autor;
+import br.edu.ufj.biblioteca.dao.CursoDAO;
+import br.edu.ufj.biblioteca.model.Curso;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
-@RequestMapping("/biblioteca/autores")
-public class AutorController {
+@RequestMapping("/cursos")
+public class CursoController {
+    
+    //Atributos
 
-    @Autowired(required = false)
-    private AutorDAO dao;
+    @Autowired
+    private CursoDAO dao;
 
     @GetMapping("/listar/{id}")
-    public Optional<Autor> buscarUm(@PathVariable int id) {
+    public Optional<Curso> buscarUm(@PathVariable int id){
         return dao.findById(id);
     }
 
     @GetMapping("/listar")
-    public List<Autor> buscarTodos() {
+    public List<Curso> buscarTodos(){
         return dao.findAll();
     }
 
     @PostMapping("/gravar")
-    public Autor gravar(@RequestBody Autor obj) {
+    public Curso gravar(@RequestBody Curso obj) {
         return dao.save(obj);
     }
 
     @PostMapping("/gravar/{id}")
-    public Autor alterar(@PathVariable int id, @RequestBody Autor obj) {
+    public Curso alterar(@PathVariable int id, @RequestBody Curso obj) {
         obj.setCodigo(id);
         return dao.save(obj);
     }
@@ -47,4 +50,5 @@ public class AutorController {
     public void excluir(@PathVariable int id) {
         dao.deleteById(id);
     }
+    
 }

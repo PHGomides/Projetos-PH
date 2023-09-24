@@ -1,39 +1,36 @@
 package br.edu.ufj.aulabackend.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Autores")
-public class Autor {
+@Table(name = "Livros")
+public class Livro {
     // Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo_autor")
+    @Column(name = "codigo_livro")
     private int codigo;
 
-    @Column(name = "nome_autor", nullable = false)
-    private String nome;
+    @Column(name = "nome_livro", nullable = false)
+    private String titulo;
 
-    @OneToMany
-    private List<Livro> livros = new ArrayList<>();
+    @ManyToOne
+    private Autor autor;
 
     // Construtores
 
-    public Autor() {
+    public Livro() {
     }
 
-    public Autor(int codigo, String nome) {
+    public Livro(int codigo, String titulo) {
         this.codigo = codigo;
-        this.nome = nome;
+        this.titulo = titulo;
     }
 
     // Métodos
@@ -46,12 +43,20 @@ public class Autor {
         this.codigo = codigo;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
     }
 
     @Override
@@ -59,7 +64,8 @@ public class Autor {
         final int prime = 31;
         int result = 1;
         result = prime * result + codigo;
-        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+        result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
+        result = prime * result + ((autor == null) ? 0 : autor.hashCode());
         return result;
     }
 
@@ -71,13 +77,18 @@ public class Autor {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Autor other = (Autor) obj;
+        Livro other = (Livro) obj;
         if (codigo != other.codigo)
             return false;
-        if (nome == null) {
-            if (other.nome != null)
+        if (titulo == null) {
+            if (other.titulo != null)
                 return false;
-        } else if (!nome.equals(other.nome))
+        } else if (!titulo.equals(other.titulo))
+            return false;
+        if (autor == null) {
+            if (other.autor != null)
+                return false;
+        } else if (!autor.equals(other.autor))
             return false;
         return true;
     }
