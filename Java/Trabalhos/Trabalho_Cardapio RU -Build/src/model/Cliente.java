@@ -2,27 +2,8 @@ package model;
 public class Cliente {
     public static String[] vetdia, vetproteina, vetvegano, vetsalada, vetfruta, vetsuco;
     public int dia;
-    public static void setVetproteina(String[] vetproteina) {
-        Cliente.vetproteina = vetproteina;
-    }
 
-    public static void setVetvegano(String[] vetvegano) {
-        Cliente.vetvegano = vetvegano;
-    }
-
-    public static void setVetsalada(String[] vetsalada) {
-        Cliente.vetsalada = vetsalada;
-    }
-
-    public static void setVetfruta(String[] vetfruta) {
-        Cliente.vetfruta = vetfruta;
-    }
-
-    public static void setVetsuco(String[] vetsuco) {
-        Cliente.vetsuco = vetsuco;
-    }
-
-    //Informações padrões do CardapioRU
+    //Construtor vazio para inserir informações padrões do cardapio
     public Cliente(){
         vetdia = new String[5];
         vetproteina = new String[5];
@@ -43,11 +24,11 @@ public class Cliente {
         vetproteina[3] = new String("Carne de porco"); 
         vetproteina[4] = new String("Escondidinho de frango");
 
-        vetvegano[0] = new String("Ovo frito"); 
+        vetvegano[0] = new String("Berinjela Defumada"); 
         vetvegano[1] = new String("Carne de soja"); 
-        vetvegano[2] = new String("Panqueca"); 
-        vetvegano[3] = new String("Ovo cozido"); 
-        vetvegano[4] = new String("Ovo");
+        vetvegano[2] = new String("Nhoque de Abóbora"); 
+        vetvegano[3] = new String("Caçarola de Abobrinha"); 
+        vetvegano[4] = new String("Empanada de Escarola");
 
         vetsalada[0] = new String("Alface e tomate"); 
         vetsalada[1] = new String("Alface e beterraba"); 
@@ -69,7 +50,10 @@ public class Cliente {
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //Contrutor usado para altera as informações de clientes
+
+
+    // ULIZAÇÃO DO BUILDER
+    //Contrutor usado para altera as informações do cardapio utilizando o padrão builder
     public Cliente(int dia, String proteina, String vegano, String salada, String fruta, String suco){
         this.dia = dia;
         this.vetproteina[dia]= proteina;
@@ -79,7 +63,7 @@ public class Cliente {
         this.vetsuco[dia] = suco;
     }
 
-      //Padrão Builder
+    //Padrão Builder
     public static class ClienteBuilder{
          public static String infoproteina, infovegano, infosalada, infofruta, infosuco;
          public  int infodia;
