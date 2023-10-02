@@ -63,7 +63,8 @@ public class Cliente {
         this.vetsuco[dia] = suco;
     }
 
-    //Padrão Builder
+
+    //Padrão de projeto Builder
     public static class ClienteBuilder{
          public static String infoproteina, infovegano, infosalada, infofruta, infosuco;
          public  int infodia;
