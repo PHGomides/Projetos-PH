@@ -12,33 +12,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ufj.aulabackend.dao.LivroDAO;
-import br.edu.ufj.aulabackend.model.Livro;
+import br.edu.ufj.aulabackend.dao.AlunoDAO;
+import br.edu.ufj.aulabackend.model.Aluno;
 
 @RestController
-@RequestMapping("/biblioteca/livros")
-public class LivroController {
+@RequestMapping("/faculdade/alunos")
+public class AlunoController {
 
     @Autowired(required = false)
-    private LivroDAO dao;
+    private AlunoDAO dao;
 
     @GetMapping("/listar/{id}")
-    public Optional<Livro> buscarUm(@PathVariable int id) {
+    public Optional<Aluno> buscarUm(@PathVariable int id) {
         return dao.findById(id);
     }
 
     @GetMapping("/listar")
-    public List<Livro> buscarTodos() {
+    public List<Aluno> buscarTodos() {
         return dao.findAll();
     }
 
     @PostMapping("/gravar")
-    public Livro gravar(@RequestBody Livro obj) {
+    public Aluno gravar(@RequestBody Aluno obj) {
         return dao.save(obj);
     }
 
     @PostMapping("/gravar/{id}")
-    public Livro alterar(@PathVariable int id, @RequestBody Livro obj) {
+    public Aluno alterar(@PathVariable int id, @RequestBody Aluno obj) {
         obj.setCodigo(id);
         return dao.save(obj);
     }

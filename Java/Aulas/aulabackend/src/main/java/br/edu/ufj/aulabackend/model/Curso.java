@@ -1,39 +1,46 @@
 package br.edu.ufj.aulabackend.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Livros")
-public class Livro {
+@Table(name = "Cursos")
+public class Curso {
     // Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo_livro")
+    @Column(name = "codigo")
     private int codigo;
 
-    @Column(name = "nome_livro", nullable = false)
-    private String titulo;
+    @Column(name = "nome_curso", nullable = false)
+    private String nome;
 
-    @ManyToOne
-    private Autor autor;
+    @OneToMany(mappedBy = "curso")
+    private List<Aluno> alunos = new ArrayList<>();
 
     // Construtores
 
-    public Livro() {
+    public Curso() {
     }
 
-    public Livro(int codigo, String titulo) {
+    public Curso(int codigo, String nome) {
         this.codigo = codigo;
-        this.titulo = titulo;
+        this.nome = nome;
     }
 
     // Métodos
+    public void adicionarAluno(Aluno aluno) {
+        alunos.add(aluno);
+        aluno.setCurso(this);
+    }
 
     public int getCodigo() {
         return codigo;
@@ -43,20 +50,17 @@ public class Livro {
         this.codigo = codigo;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getNome() {
+        return nome;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public Autor getAutor() {
-        return autor;
-    }
-
-    public void setAutor(Autor autor) {
-        this.autor = autor;
+    @Override
+    public String toString() {
+        return "Curso [codigo=" + codigo + ", nome=" + nome + "]";
     }
 
     @Override
@@ -64,8 +68,7 @@ public class Livro {
         final int prime = 31;
         int result = 1;
         result = prime * result + codigo;
-        result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
-        result = prime * result + ((autor == null) ? 0 : autor.hashCode());
+        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
         return result;
     }
 
@@ -77,18 +80,13 @@ public class Livro {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Livro other = (Livro) obj;
+        Curso other = (Curso) obj;
         if (codigo != other.codigo)
             return false;
-        if (titulo == null) {
-            if (other.titulo != null)
+        if (nome == null) {
+            if (other.nome != null)
                 return false;
-        } else if (!titulo.equals(other.titulo))
-            return false;
-        if (autor == null) {
-            if (other.autor != null)
-                return false;
-        } else if (!autor.equals(other.autor))
+        } else if (!nome.equals(other.nome))
             return false;
         return true;
     }
