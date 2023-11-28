@@ -53,9 +53,7 @@ tipoLista inserirDireita(int valor, tipoLista lista){
     listaAuxiliar->proximo = novoItem;
     
         return lista;
-    }
-
-    
+    }   
 }
 
 tipoLista removerEsquerda(tipoLista lista){

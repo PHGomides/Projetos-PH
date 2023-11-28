@@ -7,7 +7,7 @@ int aux,i;
 int a, b;
 float horas[3],totalh=0,totalv=0;
 #include "biblioteca.h"
-void main(){
+int main(void){
 setlocale( LC_ALL, "portuguese");
 
 
@@ -36,7 +36,7 @@ do{
       
     break;
 
-    case 03:
+    case 3:
 
         //Exercicio 03
        printf("\n\n Digite um numero inteiros :  ");
