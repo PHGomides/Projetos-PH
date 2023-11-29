@@ -1,0 +1,1 @@
+C:\Users\pedro\OneDrive\Documentos\GitHub\Projetos-Universidade\Rust\Paradigmas\target\debug\paradigmas.exe: C:\Users\pedro\OneDrive\Documentos\GitHub\Projetos-Universidade\Rust\Paradigmas\src\main.rs
