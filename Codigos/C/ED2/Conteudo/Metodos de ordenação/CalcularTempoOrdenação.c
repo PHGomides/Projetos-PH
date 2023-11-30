@@ -19,13 +19,6 @@ void selection(){
             }
         }
     }
-
-    printf("\n\n-------------------------------------------------");
-    printf("\n   Valores do vetor ordenado:\n\n");
-    for (int i = 0; i < MAX; i++){
-        printf(" [ %d ] ",vetor[i]);
-    }
-    printf("\n-------------------------------------------------\n\n");
 }
 
 void insertion(){
@@ -42,13 +35,6 @@ void insertion(){
        }
        vetor[j + 1] = aux;
     }
-
-    printf("\n\n-------------------------------------------------");
-    printf("\n   Valores do vetor ordenado:\n\n");
-    for (int i = 0; i < MAX; i++){
-        printf(" [ %d ] ",vetor[i]);
-    }
-    printf("\n-------------------------------------------------\n\n");
 }
 
 void bubble(){
@@ -64,13 +50,6 @@ void bubble(){
             }
         }
     }
-
-    printf("\n\n-------------------------------------------------");
-    printf("\n   Valores do vetor ordenado:\n\n");
-    for (int i = 0; i < MAX; i++){
-        printf(" [ %d ] ",vetor[i]);
-    }
-    printf("\n-------------------------------------------------\n\n");
 }
 
 void medirTempo(void (*funcaoOrdenacao)()) {
@@ -85,6 +64,13 @@ void medirTempo(void (*funcaoOrdenacao)()) {
 
     tempoDecorrido = ((double)(fim - inicio)) / (CLOCKS_PER_SEC / 1000.0);
 
+    printf("\n\n-------------------------------------------------");
+    printf("\n   Valores do vetor ordenado:\n\n");
+    for (int i = 0; i < MAX; i++){
+        printf(" [%d] ",vetor[i]);
+    }
+    printf("\n-------------------------------------------------\n\n");
+
     printf("Tempo decorrido: %.10f milissegundos\n\n", tempoDecorrido);
 }
 
@@ -96,7 +82,7 @@ int main(void){
         printf("\n   Valores do vetor Original:\n\n");
         for (int i = 0; i < MAX; i++){
             vetor[i] =  rand() % MAX;
-            printf(" [ %d ] ",vetor[i]);
+            printf(" [%d] ",vetor[i]);
         }
 
         printf("\n-------------------------------------------------");
