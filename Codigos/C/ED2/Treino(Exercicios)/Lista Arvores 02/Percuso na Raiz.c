@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #define tamanhoDoEspaco 10 
 //usada para definir os espacos entre os item da arvore na impressão da arvore 
 
@@ -372,27 +373,36 @@ int remover(tipoNoh **raiz,int valor)
     return controle;
 }
 
-void em_ordem(tipoNoh **a){
-	if ( *a =! NULL){
-		em_ordem((*a)->esquerda);
-		printf(" %d ", (*a)->item.valor);
-		em_ordem((*a)->direita);
+bool verifica_vazio(tipoNoh *raiz){
+	if (raiz==NULL){
+		return true;
+	}else{
+		return false;
+	}
+	
+}
+
+void em_ordem(tipoNoh *a){
+	if (!verifica_vazio(a)){
+		em_ordem(a->esquerda);
+		printf(" [%d] ", a->item.valor);
+		em_ordem(a->direita);
 	}
 }
 
-void pos_ordem(tipoNoh **a){
-	if ( *a =! NULL){
-		pos_ordem((*a)->esquerda);
-		printf(" %d ", (*a)->item.valor);
-		pos_ordem((*a)->direita);
+void pos_ordem(tipoNoh *a){
+	if (!verifica_vazio(a)){
+		pos_ordem(a->esquerda);
+		printf(" [%d] ", a->item.valor);
+		pos_ordem(a->direita);
 	}
 }
 
-void pre_ordem(tipoNoh **a){
-	if ( *a =! NULL){
-		printf(" %d ", (*a)->item.valor);
-		pre_ordem((*a)->esquerda);
-		pos_ordem((*a)->direita);
+void pre_ordem(tipoNoh *a){
+	if (!verifica_vazio(a)){
+		printf(" [%d] ", a->item.valor);
+		pre_ordem(a->esquerda);
+		pos_ordem(a->direita);
 	}
 }
 
@@ -453,21 +463,27 @@ int main(){
 			scanf("%d",&tipo);
 			switch (tipo){
 				case 1:
+					printf("\n------------------\n");
+					printf("Ordem : ");
 					em_ordem(raiz);
+					printf("\n------------------\n");
 					break;
 				case 2:
+					printf("\n------------------\n");
+					printf("Ordem : ");
 					pre_ordem(raiz);
+					printf("\n------------------\n");
 					break;
-
 				case 3:
+					printf("\n------------------\n");
+					printf("Ordem : ");
 					pos_ordem(raiz);
+					printf("\n------------------\n");
 					break;
-	
 				default:
 					printf("\n\n------------Tipo invalido------------\n\n");
 					break;
 				}
-
 			break;
 
 			case 0:
@@ -478,8 +494,6 @@ int main(){
 			printf("\nOpcao inválida! \n");
 			break;
 		}
-
-
 	}
 		apagarArvore(raiz);
 
