@@ -20,6 +20,7 @@ typedef struct NOH
 }tipoNoh;
 
 int contador = 0;
+int contfat = 0;
 
 
 tipoNoh *inicializar(){
@@ -122,7 +123,7 @@ int alturaNoh(tipoNoh *raiz) // calcula a altura de um nó
 
 int fatorBalanceamento(tipoNoh *raiz) // calcula o fator de balanceamento
 {
-    int contfat = labs(alturaNoh(raiz->esquerda)-alturaNoh(raiz->direita));
+    contfat = labs(alturaNoh(raiz->esquerda)-alturaNoh(raiz->direita));
 	//labs retorna o valor absoluto
     printf("\nFator de balanciamento: %d ",contfat);
     return labs(alturaNoh(raiz->esquerda)-alturaNoh(raiz->direita));
