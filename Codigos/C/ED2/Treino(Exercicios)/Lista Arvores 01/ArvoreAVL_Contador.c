@@ -19,7 +19,7 @@ typedef struct NOH
 	int altura;
 }tipoNoh;
 
-int contador = 0;
+int contador = 0 , contesq = 0 , contdir = 0;
 int contfat = 0;
 
 
@@ -182,6 +182,7 @@ int maior(int x, int y){
 
 void rotacaoDireita(tipoNoh **raiz){
 	contador++;
+	contdir++;
 
 	tipoNoh *nohAuxiliar;
 
@@ -198,6 +199,7 @@ void rotacaoDireita(tipoNoh **raiz){
 
 void rotacaoEsquerda(tipoNoh **raiz){
 	contador++;
+	contesq++;
 
 	tipoNoh *nohAuxiliar;
 
@@ -388,8 +390,12 @@ int main()
 
 		//imprimindo árvore a cada opcaoeração
 		printf("\n---Arvore atual---\n");
-        printf("\nQuantas rotacao: %d",contador);
+		printf("\n---------------CONTAGEM---------------");
+        printf("\nTotal rotacao: %d",contador);
+		printf("\nRotacao a esquerda: %d",contesq);
+		printf("\nRotacao a direita: %d",contdir);
         printf("\nFator de balanciamento: %d ",contfat);
+		printf("\n--------------------------------------\n");
 		imprimir(raiz, tamanhoDoEspaco);
        
 

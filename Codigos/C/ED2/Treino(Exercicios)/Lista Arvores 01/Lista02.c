@@ -1,16 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdlib.h>
+
 
 int main() {
     int num[500];
     int i, cod, cont = 0;
 
     for (i = 0; i < 500; i++) {
-      
-
-        
         num[i]= rand() % 500;
         printf("%d\n",num[i]);
     }
