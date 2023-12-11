@@ -1,0 +1,12 @@
+Resposta Exercicio 01:
+
+Os métodos de busca bem conhecidos dentro da computação são o método de busca linear e método de busca Binária.
+
+O método de busca Linear é basicamente uma busca aonde temos um vetor e é utilizado um laço de repetição que vai do inicio do vetor até a ultima
+casa do vetor, em busca do valor escolhido, vantagens desse método é que é simples e facil de implementar, desvantagens desse método é ser ineficiente para 
+grandes conjuntos de dados, pois o tempo de busca é proporcional ao tamanho do vetor.
+
+o método de busca Binária é basicamente uma busca aonde temos um vetor e é utilizado um metodo de ordenação para ordenar o vetor, logo após é vertificado se o valor
+a ser perquisado é maior ou menor que a metade do vetor ordenado, com isso é feita a busca no laço de repetição  apenas na metade do vetor aonde o valor se encontra.
+Vantagens desse método é que eficiente para grandes conjuntos de dados ordenados, pois reduz pela metade o espaço de busca a cada comparação. Desvantagens é que requer um vetor ordenado, 
+com isso vetor não ordenados gastaram processamento para torna-los ordenados.
