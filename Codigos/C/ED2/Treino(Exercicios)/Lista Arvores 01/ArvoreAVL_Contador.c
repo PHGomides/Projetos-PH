@@ -124,8 +124,6 @@ int alturaNoh(tipoNoh *raiz) // calcula a altura de um nó
 int fatorBalanceamento(tipoNoh *raiz) // calcula o fator de balanceamento
 {
     contfat = labs(alturaNoh(raiz->esquerda)-alturaNoh(raiz->direita));
-	//labs retorna o valor absoluto
-    printf("\nFator de balanciamento: %d ",contfat);
     return labs(alturaNoh(raiz->esquerda)-alturaNoh(raiz->direita));
 }
 

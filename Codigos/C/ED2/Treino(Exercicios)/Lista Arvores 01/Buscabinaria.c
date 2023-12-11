@@ -64,7 +64,7 @@ void buscabinaria(int valor){
     mostrarvetor(vetor);
 
 
-    if(vetor[metade_quantidade].codigo >= valor){
+    if(valor >= vetor[metade_quantidade].codigo){
         for (int i = metade_quantidade; i <= quantidade_total; i++){
             if(valor == vetor[i].codigo){
                 printf("\n---------------------------\nCodigo: %d\nNome: %s\nLaboratorio: %s\nPreco: %d\n---------------------------\n",vetor[i].codigo, vetor[i].nome, vetor[i].laboratorio, vetor[i].preco);
