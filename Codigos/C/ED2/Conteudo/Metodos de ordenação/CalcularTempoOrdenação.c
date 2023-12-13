@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdio.h>
 #include <time.h>
+#define MAX 10000000
 
-int MAX = 10;
-int vetor[10];
-
+int vetor[MAX];
 
 void selection(){
     
@@ -25,7 +24,6 @@ void insertion(){
     
     int j, aux = 0;
 
-    
     for (int i = 1; i < MAX; i++){
        aux = vetor[i];
        j = i-1;
@@ -76,13 +74,13 @@ void medirTempo(void (*funcaoOrdenacao)()) {
 
 int main(void){
     int tipo, flag = 0;
-
+    
     do{
         printf("\n\n-------------------------------------------------");
         printf("\n   Valores do vetor Original:\n\n");
         for (int i = 0; i < MAX; i++){
             vetor[i] =  rand() % MAX;
-            printf(" [%d] ",vetor[i]);
+            //printf(" [%d] ",vetor[i]);
         }
 
         printf("\n-------------------------------------------------");
