@@ -5,7 +5,6 @@
 int main(void){
     int vetor[10];
     int aux = 0;
-    int j;
 
     printf("   Valores do vetor:\n\n");
     for (int i = 0; i < 10; i++){
@@ -13,14 +12,14 @@ int main(void){
         printf(" [ %d ] ",vetor[i]);
     }
 
-    for (int i = 1; i < 10; i++){
-       aux = vetor[i];
-       j = i-1;
-       while (j>= 0 && aux < vetor[j]){
-            vetor[j + 1] = vetor[j];
-            j = j-1;
-       }
-       vetor[j + 1] = aux;
+    for (int k = 1; k < 10; k++) {
+        for (int j = 0; j < 10 - 1; j++) {
+            if (vetor[j] > vetor[j + 1]) {
+                aux = vetor[j];
+                vetor[j] = vetor[j + 1];
+                vetor[j + 1] = aux;
+            }
+        }
     }
 
      printf("\n\n   Valores do vetor ordenados:\n\n");
