@@ -10,11 +10,11 @@ int gerarCodigoHash (int chave){
 
 void inserir(){
     int posicao = gerarCodigoHash(chave);
-    if(tabelaHash[posicao] != -1){
-        printf("\nLocal da tabela ja ocupado\n");
-		return;
+    while (tabelaHash[posicao] != -1){
+        posicao = gerarCodigoHash(posicao + 1);
     }
     tabelaHash[posicao] = chave;
+     
 }
 
 int main(void){
