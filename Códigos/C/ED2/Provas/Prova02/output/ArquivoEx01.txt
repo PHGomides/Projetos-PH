@@ -1,0 +1,4 @@
+1;303;pedro;pe quebrado
+2;5443;gabriel;japones
+101;455;jorge;adada
+34;42242;lucas;jovem 24 anos
