@@ -13,6 +13,7 @@ typedef struct Item {
     struct Item *proximo;
 } Item;
 
+
 // Função para criar um novo item na pilha
 Item *criarItem(int valor) {
     Item *novoItem = (Item *)malloc(sizeof(Item));
